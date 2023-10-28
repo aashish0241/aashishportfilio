@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+                  <meta charset="UTF-8">
+                  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                  <title>Today time|| </title>
+</head>
+<style>
+     body{
+          background-color: green;
+          color: aliceblue;
+          padding-top: 10px;
+     }
+                  h1{
+                                    font-size:60px;
+                                    text-align:center;
+                                    margin: auto;
+                                    padding-top: 15px;
+
+
+                  }
+                  .button{
+                    align-items: center;
+                    text-align: center;
+                    font-size: 25px;
+                    float: left;
+                  }
+                  .showdate{
+                    padding-left: 33%;
+                    margin: auto;
+                  }
+                  .converter{
+                    margin: auto;
+                    text-align: center;
+                    padding-top: 20px;
+                  }
+</style>
+
+<body onload="showTime()">
+  <button onclick="goHome()"  class="botton">Go Back to Home</button>
+     <h1>Welcome to Aashish Digital Clock </h1>
+     <h1></h1>   
+     <div class="showdate">
+     <h2></h2>
+
+     <button onclick="showDate()" class="button">Get Full date</button>
+     <button onclick="clearDate()" class="button">Clear Date</button>
+   </div> 
+   <br>
+   <br>
+   
+
+   <script>
+       function goHome() {
+           window.location.href = 'index.html'; // Replace 'index.html' with your home page URL
+       }
+   </script>
+   
+   <div class="converter">
+   <h1>Convert Lowercase to Uppercase</h1>
+    <form>
+     <h2>Enter text in lowercase:</h2><br><br>
+        <textarea style="height: 250px; width: 75%;"  id="inputText"></textarea>
+        <br>
+        <button type="button" onclick="convertText()">Convert</button>
+    </form>
+    <p>Converted text: <span id="outputText"></span></p>
+
+</div>
+       
+</body>
+<script type=text/javascript>
+function showTime(){
+
+                  var d= new Date();
+                  var h= d.getHours();
+                  var m =d.getMinutes();
+                  var s= d.getSeconds();
+                  var session= "AM";
+                  h=h<10 ? "0"+h :h;
+                  m=m<10 ? "0"+m :m;
+                  s=s<10 ? "0"+s :s;
+                  if(h>12)
+                  {
+                    h=h-12;
+                  }
+                  if(h<=12)
+                  {
+                    session= "PM"
+                  }
+                  var time = h + ":"+ m + ":"+ s+ " "+session ;
+                  document.getElementsByTagName('h1')[1].innerText=time;
+                  setInterval(showTime, 1000);
+                 
+}
+var d;
+function showDate(){
+d= new Date();
+document.getElementsByTagName('h2')[0].innerText=d;
+
+}
+
+function clearDate() {
+        document.getElementsByTagName('h2')[0].innerText = '';
+    }
+
+    function convertText() {
+            const inputElement = document.getElementById("inputText");
+            const outputElement = document.getElementById("outputText");
+
+            if (inputElement && outputElement) {
+                const inputValue = inputElement.value;
+                const convertedValue = inputValue.toUpperCase();
+                outputElement.textContent = convertedValue;
+            }
+        }
+
+</script>
+</html>
